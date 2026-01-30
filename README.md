@@ -1,25 +1,12 @@
-# Gemmy Notion MCP
+# gemmy-notion-mcp
 
-Notion API를 Claude Code에서 사용할 수 있게 해주는 MCP 서버.
+Notion API MCP 서버. Claude Code에서 Notion 페이지/블록/DB 조작.
 
-> Based on [awkoy/notion-mcp-server](https://github.com/awkoy/notion-mcp-server) (MIT License)
+> Based on [awkoy/notion-mcp-server](https://github.com/awkoy/notion-mcp-server) (MIT)
 
 ## 설치
 
-### 1. Notion Integration 생성
-
-1. https://www.notion.so/my-integrations → "New integration"
-2. 토큰 복사 (`ntn_...`)
-
-### 2. 페이지에 Integration 연결
-
-1. 사용할 Notion 페이지 열기
-2. `...` → Connections → 생성한 Integration 추가
-3. URL에서 페이지 ID 복사: `notion.so/Title-**32자리**`
-
-### 3. .mcp.json 설정
-
-프로젝트 루트에 `.mcp.json` 생성:
+`.mcp.json`:
 
 ```json
 {
@@ -63,25 +50,15 @@ Notion API를 Claude Code에서 사용할 수 있게 해주는 MCP 서버.
 | `batch_delete_blocks` | **여러 블록 한번에 삭제** |
 | `batch_mixed_operations` | **추가/수정/삭제 혼합** |
 
-**지원 블록 타입:** paragraph, heading, callout, quote, toggle, bulleted_list, numbered_list, to_do, code, divider, image
+**지원 블록:** paragraph, heading, callout, quote, toggle, bulleted_list, numbered_list, to_do, code, divider, image
 
 ### 페이지 (notion_pages)
 
-| Action | 설명 |
-|--------|------|
-| `create_page` | 페이지 생성 |
-| `update_page_properties` | 속성 수정 |
-| `archive_page` | 아카이브 |
-| `restore_page` | 복원 |
-| `search_pages` | 검색 |
+`create_page`, `update_page_properties`, `archive_page`, `restore_page`, `search_pages`
 
 ### 데이터베이스 (notion_database)
 
-| Action | 설명 |
-|--------|------|
-| `create_database` | DB 생성 |
-| `query_database` | 쿼리 (필터, 정렬) |
-| `update_database` | 스키마 수정 |
+`create_database`, `query_database`, `update_database`
 
 ### 코멘트 (notion_comments)
 
@@ -93,22 +70,8 @@ Notion API를 Claude Code에서 사용할 수 있게 해주는 MCP 서버.
 
 ## 사용 예시
 
-Claude Code에서:
-
 ```
 "이 페이지에 체크리스트 3개 추가해줘"
 "테스트 DB에서 Status가 Todo인 항목만 조회"
 "회의록 페이지 만들고 콜아웃으로 요약 넣어줘"
-```
-
-## 개발
-
-```bash
-git clone github-work:gemmy-jaeheon/gemmy-notion-mcp.git
-cd gemmy-notion-mcp
-npm install
-npm run build
-
-# 테스트
-NOTION_TOKEN=xxx NOTION_PAGE_ID=xxx node build/index.js
 ```
