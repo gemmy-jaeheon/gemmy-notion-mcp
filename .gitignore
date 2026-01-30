@@ -1,0 +1,25 @@
+/node_modules
+/build
+/dist
+/coverage
+/logs
+/tmp
+.env
+.cursor
+.cursorignore
+.cursorrules
+.cursorconfig
+.cursorignorerules
+.cursorignoreconfig
+.npmrc
+
+# Claude Code / AI Instructions
+CLAUDE.md
+BUGS.md
+PROGRESS.md
+BACKLOG.md
+.claude/
+.cross-critic/
+.mcp.json
+parallel_dev/
+*.plist
